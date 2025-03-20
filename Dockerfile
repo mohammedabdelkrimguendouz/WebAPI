@@ -1,5 +1,5 @@
 # استخدم صورة رسمية لـ .NET Core SDK لبناء التطبيق
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # نسخ الملفات واستعادة الحزم
@@ -11,7 +11,7 @@ COPY . ./
 RUN dotnet publish -c Release -o out
 
 # استخدم صورة .NET Runtime لتشغيل التطبيق
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/out .
 
